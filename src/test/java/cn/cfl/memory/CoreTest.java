@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.junit.jupiter.api.Test;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.UnifiedJedis;
 
@@ -25,9 +24,11 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 class CoreTest {
 
-    @Test
-    public void test() throws Exception {
-        UnifiedJedis jedis = new UnifiedJedis(HostAndPort.from("127.0.0.1:6379"));
+    private static final String REDIS_HOST_AND_PORT = "127.0.0.1:6379";
+    private static final String CHAT_GPT_TOKEN = "xxxxx";
+
+    public static void main(String[] args) throws Exception {
+        UnifiedJedis jedis = new UnifiedJedis(HostAndPort.from(REDIS_HOST_AND_PORT));
 
         VectorIndexConfig vectorIndexConfig = new VectorIndexConfig();
         Config config = new Config();
@@ -47,7 +48,7 @@ class CoreTest {
         // gpt服务
         ChatGptService gptService = new ChatGptService(config, getOpenApiClient(config));
 
-        String conversationId = "conversation_1";
+        String conversationId = "CID_test1";
 
         Scanner scanner = new Scanner(System.in);
 
@@ -129,7 +130,7 @@ class CoreTest {
             .build();
 
     private static ExtOpenAiClient getOpenApiClient(Config config) {
-        List<String> tokens = Arrays.asList(config.getChatGptTokens().split(","));
+        List<String> tokens = Arrays.asList(CHAT_GPT_TOKEN.split(","));
         return new ExtOpenAiClient.Builder().apiKey(tokens).okHttpClient(OK_HTTP_CLIENT).build();
     }
 }

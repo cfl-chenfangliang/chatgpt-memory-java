@@ -30,7 +30,7 @@ public class KeyRateLimitStrategy implements KeyStrategyFunction<List<String>, S
                 key = RandomUtil.randomEle(apiKeys);
             }
         } while (StringUtils.isEmpty(key));
-        log.info("使用api key: {}", key);
+        // log.info("使用api key: {}", key);
         return key;
     }
 
