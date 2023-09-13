@@ -24,6 +24,10 @@ public class RestStructure<T> implements Serializable {
         return new RestStructure<>(data);
     }
 
+    public static RestStructure<Void> error(Integer code, String msg) {
+        return new RestStructure<>(code, msg);
+    }
+
     public RestStructure(Integer code, String message) {
         this.code = code;
         this.message = message;
@@ -32,10 +36,6 @@ public class RestStructure<T> implements Serializable {
     public RestStructure(T data) {
         this.code = 0;
         this.data = data;
-    }
-
-    public String getMsg() {
-        return message;
     }
 
 }

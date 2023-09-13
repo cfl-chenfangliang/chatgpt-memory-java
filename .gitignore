@@ -22,5 +22,3 @@ logs/
 .settings/
 node_modules/
 upload/
-package.json
-package-lock.json

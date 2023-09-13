@@ -17,6 +17,7 @@ import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.UnifiedJedis;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -44,7 +45,7 @@ class CoreTest {
         indexManage.createIndex();
 
         // gpt服务
-        ChatGptService gptService = new ChatGptService(config, getOpenApiClient());
+        ChatGptService gptService = new ChatGptService(config, getOpenApiClient(config));
 
         String conversationId = "conversation_1";
 
@@ -127,9 +128,8 @@ class CoreTest {
             .readTimeout(120, TimeUnit.SECONDS)//自定义超时时间
             .build();
 
-    private static ExtOpenAiClient getOpenApiClient() {
-        List<String> tokens = new ArrayList<>();
-        tokens.add("xxxxx");
+    private static ExtOpenAiClient getOpenApiClient(Config config) {
+        List<String> tokens = Arrays.asList(config.getChatGptTokens().split(","));
         return new ExtOpenAiClient.Builder().apiKey(tokens).okHttpClient(OK_HTTP_CLIENT).build();
     }
 }

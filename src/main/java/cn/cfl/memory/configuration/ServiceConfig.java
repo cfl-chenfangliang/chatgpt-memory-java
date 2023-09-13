@@ -12,6 +12,9 @@ import redis.clients.jedis.UnifiedJedis;
 
 import javax.annotation.Resource;
 
+/**
+ * @author chen.fangliang
+ */
 @Configuration
 public class ServiceConfig {
 

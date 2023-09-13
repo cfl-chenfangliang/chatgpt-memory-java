@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.UnifiedJedis;
 
+/**
+ * @author chen.fangliang
+ */
 @Configuration
 public class JedisConfig {
 
