@@ -9,7 +9,7 @@
 - 结合聊天记录和回忆，使对话体验更友好
 - 支持不同人不同记忆，可打造属于自己的Chat Gpt
 - 使用Java编写，对Java开发者友好
-- Chat Gpt Sdk使用了chatgpt-java，对Token限流的问题进行缓存处理
+- Chat gpt Sdk使用了chatgpt-java，在多个token的情况下，对token限流的问题进行缓存处理
 
 ## 开始步骤
 ### 以Web项目启动
