@@ -33,7 +33,7 @@ npm run dev
 
 
 ### 以命令行交互
-使用idea+测试用例的方式启动命令行交互
+搭建好Redis Stack后，使用idea+测试用例的方式启动命令行交互
 
 运行cn.cfl.memory.CoreTest#main 方法。
 修改测试参数。
