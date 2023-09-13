@@ -18,7 +18,7 @@
 3. 修改配置文件参数（application.yml），主要修改Chat Gpt Token、prompt，启动Springboot项目。
 4. 前端项目使用Vue3 + ts，配置好对应的环境后：
 
-安装依赖，这里使用npm。
+安装依赖，这里使用npm。cd到web目录下
 ```bash
 npm install
 ```
