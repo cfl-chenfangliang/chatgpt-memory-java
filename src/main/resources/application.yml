@@ -1,0 +1,10 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8082
+  servlet:
+    context-path: /api
+
