@@ -44,7 +44,44 @@ npm run dev
 启动main方法后在命令行区进行交互
 
 ## 配置说明
-TODO
+```yaml
+chat:
+  memory:
+    # chat gpt tokans，多个用逗号分隔
+    chatGptTokens: 'xxxxx'
+    # 默认的prompt，可指定gpt人设信息
+    defaultPrompt: 'xxx'
+    # 默认的总结prompt，把对话进行总结时的prompt
+    defaultSummaryPrompt: 'xxxx'
+    # defaultPrompt中的占位符。实际会根据占位符替换成记忆内容
+    promptMemoryPlaceholder: '{memoryChats}'
+    # 对话总结后，判断相似度的值，低于下面的值会被认为是相同记忆而不记录入库
+    similarityScoreUnder: 0.180000000000
+    # 储存的最大聊天记录
+    storeMaxChatHistory: 100
+    # 询问gpt问题时，携带的历史聊天数量
+    historyTopN: 1
+    # 询问gpt问题时，携带的记忆数量
+    memoryTopN: 5
+    # redis search记忆相关配置，索引默认使用HNSW
+    indexConfig:
+      # 索引名称
+      indexName: idx
+      # 向量字段，用户自定义
+      vectorField: embedding
+      # 向量类型，目前只能使用FLOAT32，因为转成byte时使用了Long类型和1024的dim
+      type: FLOAT32
+      # 向量维度，其实就是byte数组的长度。因为redis search查询需要使用相同的检索长度数据
+      dim: 1024
+      # 内积（IP）、欧式距离（L2）、余弦相似度（COSINE）；这里使用距离，所以结果越小越相似
+      distanceMetric: L2
+      # 初始向量索引大小，默认即可
+      initialCap: 686
+      # 跟HNSW算法有关。每一层图中，每个节点允许最大出边数
+      m: 40
+      # 跟HNSW算法有关。在图构建过程中，每个节点允许最大出边数量
+      efConstruction: 200
+```
 
 ## 效果
 ![img_1.png](img_1.png)
